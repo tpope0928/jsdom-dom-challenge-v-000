@@ -17,3 +17,9 @@ plus.addEventListener("click", function() {
   let num = parseInt(clock.innerText);
   clock.innerText = num += 1;
 })
+
+minus.addEventListener("click", function() {
+  let clock = document.getElementById('counter');
+  let num = parseInt(clock.innerText);
+  clock.innerText = num -= 1;
+})

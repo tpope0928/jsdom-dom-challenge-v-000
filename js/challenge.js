@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
   plus.addEventListener("click", increment);
   pause.addEventListener("click", pauseButtonClicked);
   heart.addEventListener("click", likeButtonClicked);
-
+  // handles adding comments
   form.addEventListener("submit", function(event) {
     let comment = document.createElement("p");
     comment.innerText = input.value;
@@ -23,3 +23,52 @@ document.addEventListener("DOMContentLoaded", () => {
     event.preventDefault();
     comments.appendChild(comment);
   });
+
+  function incrementPerSecond() {
+    if (pause.innerText == "pause") {
+      counter.innerHTML++;
+    } else {
+      clearInterval(startInterval);
+    }
+  };
+
+  function increment() {
+    counter.innerHTML++;
+  };
+
+  function decrement() {
+    counter.innerHTML--;
+  };
+
+  function pauseButtonClicked() {
+    if (pause.innerText == "pause") {
+      pause.innerText = "resume";
+
+      submit.disabled = true;
+      heart.disabled = true;
+      plus.disabled = true;
+      minus.disabled = true;
+
+      clearInterval(startInterval);
+    } else {
+      pause.innerText = "pause";
+
+      submit.disabled = false;
+      heart.disabled = false;
+      plus.disabled = false;
+      minus.disabled = false;
+
+      // restart counter
+      startInterval = setInterval(incrementPerSecond, 1000);
+    }
+  };
+
+  function likeButtonClicked() {
+    let like = document.createElement("li");
+    like.innerText = counter.innerHTML + " was liked";
+
+    likes.append(like);
+  };
+
+  startInterval;
+});

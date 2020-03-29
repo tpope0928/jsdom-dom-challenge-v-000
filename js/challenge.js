@@ -10,3 +10,16 @@ document.addEventListener("DOMContentLoaded", () => {
   let comments = document.getElementById("list");
   let form = document.getElementById("comment-form");
   let input = document.getElementById("comment-input");
+
+  minus.addEventListener("click", decrement);
+  plus.addEventListener("click", increment);
+  pause.addEventListener("click", pauseButtonClicked);
+  heart.addEventListener("click", likeButtonClicked);
+
+  form.addEventListener("submit", function(event) {
+    let comment = document.createElement("p");
+    comment.innerText = input.value;
+
+    event.preventDefault();
+    comments.appendChild(comment);
+  });

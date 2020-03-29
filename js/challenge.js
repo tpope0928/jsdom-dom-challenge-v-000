@@ -11,3 +11,9 @@ function start() {
 function increase() {
   clock.innerText++
 }
+
+plus.addEventListener("click", function() {
+  let clock = document.getElementById('counter');
+  let num = parseInt(clock.innerText);
+  clock.innerText = num += 1;
+})
